@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +25,7 @@ namespace OpenBulletAdminPanel
     public partial class MainWindow : Window
     {
         Settings settings;
+
         public Uri UsersUri
         {
             get
@@ -31,6 +33,16 @@ namespace OpenBulletAdminPanel
                 var baseUrl = settings.ApiUrl;
                 if (baseUrl.EndsWith("/")) baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
                 return new Uri($"{baseUrl}/api/users");
+            }
+        }
+
+        public Uri ConfigsUri
+        {
+            get
+            {
+                var baseUrl = settings.ApiUrl;
+                if (baseUrl.EndsWith("/")) baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                return new Uri($"{baseUrl}/api/configs");
             }
         }
 
@@ -135,6 +147,40 @@ namespace OpenBulletAdminPanel
         {
             try { Clipboard.SetText((usersListView.SelectedItem as User).Key); }
             catch { }
+        }
+
+        private void SearchConfigButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "loli files (*.loli)|*.loli";
+            ofd.ShowDialog();
+            if (!string.IsNullOrEmpty(ofd.FileName)) configPathTextbox.Text = ofd.FileName;
+        }
+
+        private void UploadConfigButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (configGroupTextbox.Text.Trim() == "")
+            {
+                MessageBox.Show("Group cannot be empty");
+                return;
+            }
+
+            if (configPathTextbox.Text.Trim() == "")
+            {
+                MessageBox.Show("Path cannot be empty");
+                return;
+            }
+
+            try
+            {
+                WebClient wc = new WebClient();
+                wc.Headers.Add(HttpRequestHeader.Authorization, settings.SecretKey);
+                wc.Headers.Add("Group", configGroupTextbox.Text);
+                wc.Headers.Add("Name", System.IO.Path.GetFileName(configPathTextbox.Text));
+                wc.UploadFile(ConfigsUri, configPathTextbox.Text);
+                MessageBox.Show("Sent!");
+            }
+            catch (Exception ex) { MessageBox.Show($"Failed to upload the config: {ex.Message}"); }
         }
     }
 }

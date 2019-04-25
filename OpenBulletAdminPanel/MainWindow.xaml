@@ -22,7 +22,7 @@
                 <Button x:Name="refreshUsersButton" Content="Refresh" Click="refreshUsersButton_Click" Margin="5"/>
                 <Button x:Name="addUserButton" Content="Add" Click="addUserButton_Click" Margin="5"/>
             </StackPanel>
-            <ListView Margin="10" Name="usersListView" Height="150">
+            <ListView Margin="5" Name="usersListView" Height="150">
                 <ListView.ContextMenu>
                     <ContextMenu>
                         <MenuItem x:Name="editUserMenuItem" Header="Edit" Click="EditUserMenuItem_Click"/>
@@ -38,7 +38,16 @@
                 </ListView.View>
             </ListView>
             <Label Content="Configs" FontWeight="Bold" FontSize="16"/>
-            <Label Content="Under construction... for now just add/remove the config manually on the remote folder."/>
+            <DockPanel>
+                <Label Content="Upload:" />
+                <Button x:Name="searchConfigButton" Content="Search..." Click="SearchConfigButton_Click" Width="100"/>
+                <Label Content="Loaded:"/>
+                <TextBox x:Name="configPathTextbox" IsReadOnly="True" Width="250"/>
+                <Label Content="Group:" />
+                <TextBox x:Name="configGroupTextbox" Width="100"/>
+                <Button x:Name="uploadConfigButton" Content="Upload" Click="UploadConfigButton_Click" Width="100" HorizontalAlignment="Right" Margin="5 0"/>
+            </DockPanel>
+            
         </StackPanel>
     </Grid>
 </Window>
