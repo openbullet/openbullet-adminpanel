@@ -1,0 +1,4 @@
+{
+    "ApiUrl": "https://example.com",
+    "SecretKey":  "MySuperSecretPassword"
+}

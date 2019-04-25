@@ -1,0 +1,24 @@
+﻿<Window x:Class="OpenBulletAdminPanel.CreateUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OpenBulletAdminPanel"
+        mc:Ignorable="d"
+        Title="CreateUser" Height="170" Width="400">
+    <Grid Margin="5">
+        <StackPanel>
+            <DockPanel>
+                <Label Content="API Key" />
+                <Button x:Name="generateKeyButton" Content="Generate" Click="GenerateKeyButton_Click" />
+                <TextBox x:Name="apiKeyTextbox" />
+            </DockPanel>
+            <DockPanel>
+                <Label Content="Groups" />
+                <TextBox x:Name="groupsTextbox"/>
+            </DockPanel>
+            <Label Content="(groups must be comma separated)" Foreground="OrangeRed"/>
+            <Button x:Name="acceptButton" Content="ACCEPT" Click="AcceptButton_Click" Height="30"/>
+        </StackPanel>
+    </Grid>
+</Window>

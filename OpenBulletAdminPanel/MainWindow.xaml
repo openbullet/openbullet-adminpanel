@@ -1,0 +1,44 @@
+﻿<Window x:Class="OpenBulletAdminPanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OpenBulletAdminPanel"
+        mc:Ignorable="d"
+        Title="OpenBullet - Admin Panel" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Label Content="Setup" FontWeight="Bold" FontSize="16"/>
+            <DockPanel>
+                <Label Content="API URL" />
+                <TextBox x:Name="apiTextbox" TextChanged="ApiTextbox_TextChanged"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="Secret Key"/>
+                <TextBox x:Name="secretKeyTextbox" TextChanged="SecretKeyTextbox_TextChanged"/>
+            </DockPanel>
+            <Label Content="Users" FontWeight="Bold" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" Height="40">
+                <Button x:Name="refreshUsersButton" Content="Refresh" Click="refreshUsersButton_Click" Margin="5"/>
+                <Button x:Name="addUserButton" Content="Add" Click="addUserButton_Click" Margin="5"/>
+            </StackPanel>
+            <ListView Margin="10" Name="usersListView" Height="150">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="editUserMenuItem" Header="Edit" Click="EditUserMenuItem_Click"/>
+                        <MenuItem x:Name="deleteUserMenuItem" Header="Delete" Click="DeleteUserMenuItem_Click"/>
+                        <MenuItem x:Name="copyApiKeyMenuItem" Header="Copy API Key" Click="CopyApiKeyMenuItem_Click"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Key" Width="350" DisplayMemberBinding="{Binding Key}" />
+                        <GridViewColumn Header="Groups" Width="350" DisplayMemberBinding="{Binding Grps}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Label Content="Configs" FontWeight="Bold" FontSize="16"/>
+            <Label Content="Under construction... for now just add/remove the config manually on the remote folder."/>
+        </StackPanel>
+    </Grid>
+</Window>
