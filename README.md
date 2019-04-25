@@ -1,4 +1,4 @@
 # OpenBullet Admin Panel
 Admin Panel for the OpenBullet API.
 
-Coming soon...
+Go [https://openbullet.github.io/remote.html](here) to learn how to use this.
