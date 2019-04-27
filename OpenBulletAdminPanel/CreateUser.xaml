@@ -22,6 +22,7 @@
                 <TextBox x:Name="ipsTextbox"/>
             </DockPanel>
             <Label Content="(groups and IPs must be comma separated)" Foreground="OrangeRed"/>
+            <Label Content="If the IPs field is blank, any IP is allowed" Foreground="OrangeRed"/>
             <Button x:Name="acceptButton" Content="ACCEPT" Click="AcceptButton_Click" Height="30"/>
         </StackPanel>
     </Grid>
