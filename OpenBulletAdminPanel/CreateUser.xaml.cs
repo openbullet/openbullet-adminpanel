@@ -30,7 +30,8 @@ namespace OpenBulletAdminPanel
             if (user != null)
             {
                 apiKeyTextbox.Text = user.Key;
-                groupsTextbox.Text = user.Grps;
+                groupsTextbox.Text = user.GroupsString;
+                ipsTextbox.Text = user.IPsString;
             }
 
             Edit = edit;
@@ -48,7 +49,11 @@ namespace OpenBulletAdminPanel
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            var user = new User() { Key = apiKeyTextbox.Text, Groups = groupsTextbox.Text.Split(',').Select(g => g.Trim()).ToArray() };
+            var user = new User() {
+                Key = apiKeyTextbox.Text,
+                Groups = groupsTextbox.Text.Split(',').Select(g => g.Trim()).ToArray(),
+                IPs = ipsTextbox.Text.Split(',').Select(i => i.Trim()).ToArray()
+            };
 
             if (Edit) (Caller as MainWindow).UpdateUser(user);
             else (Caller as MainWindow).AddUser(user);

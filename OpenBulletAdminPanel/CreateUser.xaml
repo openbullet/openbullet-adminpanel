@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenBulletAdminPanel"
         mc:Ignorable="d"
-        Title="CreateUser" Height="170" Width="400">
+        Title="CreateUser" Height="220" Width="400">
     <Grid Margin="5">
         <StackPanel>
             <DockPanel>
@@ -17,7 +17,11 @@
                 <Label Content="Groups" />
                 <TextBox x:Name="groupsTextbox"/>
             </DockPanel>
-            <Label Content="(groups must be comma separated)" Foreground="OrangeRed"/>
+            <DockPanel>
+                <Label Content="IPs" />
+                <TextBox x:Name="ipsTextbox"/>
+            </DockPanel>
+            <Label Content="(groups and IPs must be comma separated)" Foreground="OrangeRed"/>
             <Button x:Name="acceptButton" Content="ACCEPT" Click="AcceptButton_Click" Height="30"/>
         </StackPanel>
     </Grid>

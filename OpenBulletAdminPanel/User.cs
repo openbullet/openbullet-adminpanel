@@ -10,7 +10,9 @@ namespace OpenBulletAdminPanel
     {
         public string Key { get; set; }
         public string[] Groups { get; set; }
+        public string[] IPs { get; set; }
 
-        public string Grps { get { return string.Join(",", Groups); } }
+        public string GroupsString { get { return string.Join(",", Groups); } }
+        public string IPsString { get { return string.Join(",", IPs); } }
     }
 }

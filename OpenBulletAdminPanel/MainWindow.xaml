@@ -33,7 +33,8 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Key" Width="350" DisplayMemberBinding="{Binding Key}" />
-                        <GridViewColumn Header="Groups" Width="350" DisplayMemberBinding="{Binding Grps}" />
+                        <GridViewColumn Header="Groups" Width="150" DisplayMemberBinding="{Binding GroupsString}" />
+                        <GridViewColumn Header="IPs" Width="250" DisplayMemberBinding="{Binding IPsString}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
