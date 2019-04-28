@@ -51,8 +51,8 @@ namespace OpenBulletAdminPanel
         {
             var user = new User() {
                 Key = apiKeyTextbox.Text,
-                Groups = groupsTextbox.Text.Split(',').Select(g => g.Trim()).ToArray(),
-                IPs = ipsTextbox.Text.Split(',').Select(i => i.Trim()).ToArray()
+                Groups = groupsTextbox.Text.Split(',').Select(g => g.Trim()).Where(g => g != "").ToArray(),
+                IPs = ipsTextbox.Text.Split(',').Select(i => i.Trim()).Where(i => i != "").ToArray()
             };
 
             if (Edit) (Caller as MainWindow).UpdateUser(user);
